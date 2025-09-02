@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Email Signature Generator</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 800px;
+      margin: 20px auto;
+    }
+    form {
+      margin-bottom: 20px;
+      padding: 10px;
+      border: 1px solid #ccc;
+    }
+    label {
+      display: block;
+      margin-top: 10px;
+    }
+    input {
+      width: 100%;
+      padding: 6px;
+      margin-top: 4px;
+    }
+    #preview {
+      margin-top: 20px;
+      padding: 10px;
+      border: 1px solid #aaa;
+      background: #f9f9f9;
+    }
+    button {
+      margin-top: 10px;
+      padding: 8px 12px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Email Signature Generator</h2>
+
+  <form id="sigForm">
+    <label>
+      Full Name:
+      <input type="text" id="name" placeholder="Jane Doe">
+    </label>
+    <label>
+      Job Title:
+      <input type="text" id="title" placeholder="Marketing Manager">
+    </label>
+    <label>
+      Email:
+      <input type="email" id="email" placeholder="jane.doe@example.com">
+    </label>
+    <label>
+      Phone:
+      <input type="text" id="phone" placeholder="+1 (555) 123-4567">
+    </label>
+    <button type="button" onclick="generateSignature()">Generate</button>
+  </form>
+
+  <h3>Preview:</h3>
+  <div id="preview"></div>
+  <button id="copyBtn" style="display:none;" onclick="copySignature()">Copy Signature</button>
+
+  <script>
+    // Template HTML with placeholders
+    const template = `
+      <table style="font-family: Arial, sans-serif; font-size:14px; line-height:1.4;">
+        <tr>
+          <td style="padding-right:10px;">
+            <img src="https://via.placeholder.com/80" alt="Logo" width="80">
+          </td>
+          <td>
+            <strong style="font-size:16px;">{{name}}</strong><br>
+            <span style="color:#555;">{{title}}</span><br>
+            <a href="mailto:{{email}}" style="color:#0066cc; text-decoration:none;">{{email}}</a><br>
+            <span>{{phone}}</span>
+          </td>
+        </tr>
+      </table>
+    `;
+
+    function generateSignature() {
+      const name = document.getElementById('name').value || '';
+      const title = document.getElementById('title').value || '';
+      const email = document.getElementById('email').value || '';
+      const phone = document.getElementById('phone').value || '';
+
+      let signature = template
+        .replace(/{{name}}/g, name)
+        .replace(/{{title}}/g, title)
+        .replace(/{{email}}/g, email)
+        .replace(/{{phone}}/g, phone);
+
+      document.getElementById('preview').innerHTML = signature;
+      document.getElementById('copyBtn').style.display = 'inline-block';
+    }
+
+    function copySignature() {
+      const preview = document.getElementById('preview').innerHTML;
+      const tempElem = document.createElement('textarea');
+      tempElem.value = preview;
+      document.body.appendChild(tempElem);
+      tempElem.select();
+      document.execCommand('copy');
+      document.body.removeChild(tempElem);
+      alert("Signature copied! You can now paste it into your email client.");
+    }
+  </script>
+
+</body>
+</html>
