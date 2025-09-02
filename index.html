@@ -132,7 +132,10 @@
     
       <h3 style="font-family:'Baskervville',serif; color:#32414c;">Preview:</h3>
       <div id="preview"></div>
-      <button id="copyBtn" style="display:none;" onclick="copySignature()">Copy Signature</button>
+      <div class="button-row">
+        <button id="copyBtn" style="display:none;" onclick="copySignature()">Copy Signature</button>
+        <button id="downloadBtn" style="display:none;" onclick="downloadSignature()">Download HTML</button>
+      </div>
     </div>
   </div>
 
@@ -202,6 +205,17 @@ function copySignature() {
     alert("Signature copied! You can now paste it into Gmail or Outlook.");
   }
 }
+    
+  function downloadSignature() {
+      const preview = document.getElementById('preview').innerHTML;
+      const blob = new Blob([preview], { type: "text/html" });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = "email-signature.html";
+      a.click();
+      URL.revokeObjectURL(url);
+    }
   </script>
 
 </body>
