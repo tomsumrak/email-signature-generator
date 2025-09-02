@@ -177,16 +177,31 @@ const template = `
       document.getElementById('copyBtn').style.display = 'inline-block';
     }
 
-    function copySignature() {
-      const preview = document.getElementById('preview').innerHTML;
-      const tempElem = document.createElement('textarea');
-      tempElem.value = preview;
-      document.body.appendChild(tempElem);
-      tempElem.select();
-      document.execCommand('copy');
-      document.body.removeChild(tempElem);
-      alert("Signature copied! You can now paste it into your email client.");
-    }
+function copySignature() {
+  const preview = document.getElementById('preview');
+
+  // Modern API for copying HTML
+  if (navigator.clipboard && navigator.clipboard.write) {
+    const blob = new Blob([preview.innerHTML], { type: "text/html" });
+    const data = [new ClipboardItem({ "text/html": blob })];
+
+    navigator.clipboard.write(data).then(() => {
+      alert("Signature copied! You can now paste it into Gmail or Outlook.");
+    }).catch(err => {
+      console.error("Clipboard copy failed", err);
+      alert("Could not copy automatically. Please select and copy the signature manually.");
+    });
+  } else {
+    // Fallback for older browsers
+    const range = document.createRange();
+    range.selectNode(preview);
+    window.getSelection().removeAllRanges();
+    window.getSelection().addRange(range);
+    document.execCommand("copy");
+    window.getSelection().removeAllRanges();
+    alert("Signature copied! You can now paste it into Gmail or Outlook.");
+  }
+}
   </script>
 
 </body>
