@@ -137,22 +137,24 @@
   </div>
 
   <script>
-    // Template HTML with placeholders
-    const template = `
-      <table style="font-family: Jost, Arial, sans-serif; font-size:14px; line-height:1.4;">
-        <tr>
-          <td style="padding-right:12px;">
-            <img src="https://doubleriver.com/wp-content/uploads/2025/01/main-logo_1@medium-png.png" alt="Logo" width="100">
-          </td>
-          <td>
-            <strong style="font-size:16px; color:#32414c;">{{name}}</strong><br>
-            <span style="color:#555;">{{title}}</span><br>
-            <a href="mailto:{{email}}" style="color:#0066cc; text-decoration:none;">{{email}}</a><br>
-            <span>{{phone}}</span>
-          </td>
-        </tr>
-      </table>
-    `;
+// Template HTML with placeholders
+const template = `
+  <table style="font-family: Jost, Arial, sans-serif; font-size:14px; line-height:1.4; text-align:center;">
+    <tr>
+      <td style="padding-bottom:10px;">
+        <img src="https://doubleriver.com/wp-content/uploads/2025/01/main-logo_1@medium-png.png" alt="Logo" width="100">
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span style="font-size:22px; color:#cc8483; margin-right:5px; font-family: 'Baskervville', serif;">{{name}}</span><span>|</span>
+          <span style="color:#32414c; margin-left: 5px; font-family: 'Baskervville', serif;">{{title}}</span>
+        <span style="color:#32414c; text-decoration:none;">{{email}}</span><br>
+        <span style="color:#32414c;">{{phone}}</span>
+      </td>
+    </tr>
+  </table>
+`;
 
     function generateSignature() {
       const name = document.getElementById('name').value || '';
