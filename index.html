@@ -141,16 +141,17 @@
 const template = `
   <table style="font-family: Jost, Arial, sans-serif; font-size:14px; line-height:1.7; text-align:left;">
     <tr>
-      <td style="padding-bottom:6px;">
+      <td style="padding-bottom:2px; line-height:1;">
         <img src="https://doubleriver.com/wp-content/uploads/2025/01/main-logo_1@medium-png.png" alt="Logo" width="220px">
       </td>
     </tr>
     <tr>
       <td>
-        <span style="font-size:26px; color:#cc8483; margin-right:5px; font-family: 'Baskervville', serif;">{{name}}</span><span>|</span>
+        <span style="font-size:22px; color:#cc8483; margin-right:8px; font-family: 'Baskervville', serif;">{{name}}</span>
+          <span style="font-family: sans-serif; font-size: 20px; font-weight: 100;">|</span>
           <span style="color:#32414c; margin-left: 5px; font-family: 'Baskervville', serif;">{{title}}</span><br>
-        <a href="{{email}}" style="color:#32414c; text-decoration:none; margin-top:4px;">{{email}}</a><br>
-        <a href="{{phone}}" style="color:#32414c;">{{phone}}</a><br>
+        <a href="mailto:{{email}}" style="color:#32414c; text-decoration:none; margin-top:4px;">{{email}}</a><br>
+        <a href="tel:{{phoneRaw}}" style="color:#32414c;">{{phone}}</a><br>
         <a href="https://www.doubleriver.com" style="color:#32414c;">www.doubleriver.com</a>
       </td>
     </tr>
@@ -163,11 +164,14 @@ const template = `
       const email = document.getElementById('email').value || '';
       const phone = document.getElementById('phone').value || '';
 
+      const phoneRaw = phone.replace(/[\s()-]/g, '');
+      
       let signature = template
         .replace(/{{name}}/g, name)
         .replace(/{{title}}/g, title)
         .replace(/{{email}}/g, email)
-        .replace(/{{phone}}/g, phone);
+        .replace(/{{phone}}/g, phone)
+        .replace(/{{phoneRaw}}/g, phoneRaw);
 
       document.getElementById('preview').innerHTML = signature;
       document.getElementById('copyBtn').style.display = 'inline-block';
