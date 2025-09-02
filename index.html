@@ -3,40 +3,81 @@
 <head>
   <meta charset="UTF-8">
   <title>Email Signature Generator</title>
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Baskervville&family=Jost:wght@400;500&display=swap" rel="stylesheet">
   <style>
     body {
-      font-family: Arial, sans-serif;
+      font-family: 'Jost', sans-serif;
       max-width: 800px;
-      margin: 20px auto;
+      margin: 0 auto;
+      background: #f4f6f8;
+    }
+    /* Banner */
+    .banner {
+      background-color: #32414c;
+      height: 200px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .banner img {
+      max-height: 140px;
+    }
+    h2 {
+      font-family: 'Baskervville', serif;
+      font-size: 28px;
+      text-align: center;
+      margin: 20px 0;
+      color: #32414c;
     }
     form {
       margin-bottom: 20px;
-      padding: 10px;
-      border: 1px solid #ccc;
+      padding: 20px;
+      background: #fff;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
     }
     label {
       display: block;
-      margin-top: 10px;
+      margin-top: 12px;
+      font-weight: 500;
     }
     input {
       width: 100%;
-      padding: 6px;
+      padding: 8px;
       margin-top: 4px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
     }
     #preview {
       margin-top: 20px;
-      padding: 10px;
+      padding: 15px;
       border: 1px solid #aaa;
-      background: #f9f9f9;
+      background: #fff;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
     }
     button {
-      margin-top: 10px;
-      padding: 8px 12px;
+      margin-top: 15px;
+      padding: 10px 16px;
       cursor: pointer;
+      border: none;
+      background-color: #32414c;
+      color: white;
+      font-family: 'Jost', sans-serif;
+      border-radius: 4px;
+    }
+    button:hover {
+      background-color: #445866;
     }
   </style>
 </head>
 <body>
+
+  <!-- Banner -->
+  <div class="banner">
+    <img src="https://doubleriver.com/wp-content/uploads/2025/01/main-logo_1@medium-png.png" alt="Company Logo">
+  </div>
 
   <h2>Email Signature Generator</h2>
 
@@ -60,20 +101,20 @@
     <button type="button" onclick="generateSignature()">Generate</button>
   </form>
 
-  <h3>Preview:</h3>
+  <h3 style="font-family:'Baskervville',serif; color:#32414c;">Preview:</h3>
   <div id="preview"></div>
   <button id="copyBtn" style="display:none;" onclick="copySignature()">Copy Signature</button>
 
   <script>
     // Template HTML with placeholders
     const template = `
-      <table style="font-family: Arial, sans-serif; font-size:14px; line-height:1.4;">
+      <table style="font-family: Jost, Arial, sans-serif; font-size:14px; line-height:1.4;">
         <tr>
-          <td style="padding-right:10px;">
-            <img src="https://via.placeholder.com/80" alt="Logo" width="80">
+          <td style="padding-right:12px;">
+            <img src="https://doubleriver.com/wp-content/uploads/2025/01/main-logo_1@medium-png.png" alt="Logo" width="100">
           </td>
           <td>
-            <strong style="font-size:16px;">{{name}}</strong><br>
+            <strong style="font-size:16px; color:#32414c;">{{name}}</strong><br>
             <span style="color:#555;">{{title}}</span><br>
             <a href="mailto:{{email}}" style="color:#0066cc; text-decoration:none;">{{email}}</a><br>
             <span>{{phone}}</span>
