@@ -8,13 +8,13 @@
   <style>
     body {
       font-family: 'Jost', sans-serif;
-      max-width: 800px;
       margin: 0 auto;
       background: #f4f6f8;
     }
     /* Banner */
     .banner {
       background-color: #32414c;
+      width: 100%;
       height: 200px;
       display: flex;
       justify-content: center;
@@ -22,6 +22,9 @@
     }
     .banner img {
       max-height: 140px;
+    }
+    .body-container {
+      max-width: 800px;
     }
     h2 {
       font-family: 'Baskervville', serif;
@@ -76,35 +79,34 @@
 
   <!-- Banner -->
   <div class="banner">
-    <img src="https://doubleriver.com/wp-content/uploads/2025/01/main-logo_1@medium-png.png" alt="Company Logo">
+    <img src="https://doubleriver.com/wp-content/uploads/2025/01/main-logo-white_1@medium-png.png" alt="Company Logo">
   </div>
-
-  <h2>Email Signature Generator</h2>
-
-  <form id="sigForm">
-    <label>
-      Full Name:
-      <input type="text" id="name" placeholder="Jane Doe">
-    </label>
-    <label>
-      Job Title:
-      <input type="text" id="title" placeholder="Marketing Manager">
-    </label>
-    <label>
-      Email:
-      <input type="email" id="email" placeholder="jane.doe@example.com">
-    </label>
-    <label>
-      Phone:
-      <input type="text" id="phone" placeholder="+1 (555) 123-4567">
-    </label>
-    <button type="button" onclick="generateSignature()">Generate</button>
-  </form>
-
-  <h3 style="font-family:'Baskervville',serif; color:#32414c;">Preview:</h3>
-  <div id="preview"></div>
-  <button id="copyBtn" style="display:none;" onclick="copySignature()">Copy Signature</button>
-
+  <div class="body-container">
+    <h2>Email Signature Generator</h2>
+    <form id="sigForm">
+      <label>
+        Full Name:
+        <input type="text" id="name" placeholder="Jane Doe">
+      </label>
+      <label>
+        Job Title:
+        <input type="text" id="title" placeholder="Marketing Manager">
+      </label>
+      <label>
+        Email:
+        <input type="email" id="email" placeholder="jane.doe@example.com">
+      </label>
+      <label>
+        Phone:
+        <input type="text" id="phone" placeholder="+1 (555) 123-4567">
+      </label>
+      <button type="button" onclick="generateSignature()">Generate</button>
+    </form>
+  
+    <h3 style="font-family:'Baskervville',serif; color:#32414c;">Preview:</h3>
+    <div id="preview"></div>
+    <button id="copyBtn" style="display:none;" onclick="copySignature()">Copy Signature</button>
+  </div>
   <script>
     // Template HTML with placeholders
     const template = `
