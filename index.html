@@ -98,10 +98,6 @@
     button:hover {
       background-color: #445866;
     }
-    .vl {
-      border-left: 1px #32414c;
-      height: 16px;
-    }
   </style>
 </head>
 <body>
@@ -145,7 +141,6 @@
 
   <script>
 // Template HTML with placeholders
-// <span style="font-family: sans-serif; font-weight: 100;">|</span>
 const template = `
   <table style="font-family: Jost, Arial, sans-serif; font-size:14px; line-height:1.7; text-align:left;">
     <tr>
@@ -156,7 +151,7 @@ const template = `
     <tr>
       <td>
         <span style="font-size:22px; color:#cc8483; margin-right:8px; font-family: 'Baskervville', serif;">{{name}}</span>
-          <div class="vl"></div>
+          <span style="font-family: sans-serif; font-weight: 100;">|</span>
           <span style="color:#32414c; margin-left: 5px; font-family: 'Baskervville', serif;">{{title}}</span><br>
         <a href="mailto:{{email}}" style="color:#32414c; text-decoration:none; margin-top:4px;">{{email}}</a><br>
         <a href="tel:{{phoneRaw}}" style="color:#32414c; text-decoration:none;">{{phone}}</a><br>
